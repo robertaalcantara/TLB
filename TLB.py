@@ -1,9 +1,19 @@
-import numpy as py
+import numpy as np
+import matplotlib.pyplot as plt
+
+def grafico(v1, v2):
+    plt.plot(v1, v2)
+    plt.title('Resultados')
+    plt.xlabel('Contadores') #rotula o eixo x
+    plt.ylabel('Tamanho') #rotula o eixo y
+    plt.ylim(0, 4096) #limites do eixo x
+    plt.show()
+    
 
 #lê os arquivos para cada tamanho de TLB e retorna as taxas
 def simulador(tamanho):
     arquivos = ['bigone', 'bzip', 'gcc', 'sixpack', 'swim']
-    #arquivos = ['bzip']
+    # arquivos = ['bzip']
     tlb = []
     #variaveis que retornam todos os valores calculados dai
     taxasAcerto = []
@@ -20,6 +30,7 @@ def simulador(tamanho):
         subTlb = 0 #substitui um valor ja escrito
 
         file = open('Arquivos/'+arquivo+'.trace', 'r')
+       
 
         linhas = file.readlines()
 
@@ -64,18 +75,24 @@ if __name__ == "__main__":
     for i in range(1,13):
         
         tam = pow(2,i)
-        print(tam)
+        # print(tam)
 
         contInTlb, taxasAcerto, contNewTlb, taxasAdd, contSubTlb, taxasSub = simulador(tam)
-        print(contInTlb, taxasAcerto, contNewTlb, taxasAdd, contSubTlb, taxasSub)
+        # print(contInTlb, taxasAcerto, contNewTlb, taxasAdd, contSubTlb, taxasSub)
 
         for i in taxasAcerto:
             time = i * (tTlb+tm) + (1 - i) * (tTlb + 2 * tm)
             tmac.append(time)
 
-        print("tamanho: ", tam)
-        print("tmac: ", tmac)
+        # print("tamanho: ", tam)
+        # print("tmac: ", tmac)
         # tmac = alfa(Ttlb+Tm)+(1 - alfa)(Ttlb + 2 * Tm),onde:
         # taxasAcerto[i] = taxa de acerto da tlb
         # tTlb = tempo de acesso à tlb
         # tm = tempo médio
+        
+    tamanho = [2,4,8,16,32,64,128,256,512,1024,2048,4096]
+    # print(contNewTlb)
+    # plt.plot(tamanho,np.array(contInTlb))
+    # plt.show()
+    grafico(contInTlb, tamanho)
