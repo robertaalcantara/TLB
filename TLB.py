@@ -30,7 +30,6 @@ def simulador(tamanho):
         subTlb = 0 #substitui um valor ja escrito
 
         file = open('Arquivos/'+arquivo+'.trace', 'r')
-       
 
         linhas = file.readlines()
 
@@ -68,8 +67,8 @@ def simulador(tamanho):
     
 
 if __name__ == "__main__":
-    tm = 800
-    tTlb = 80
+    tm = 150
+    tTlb = 60
     tmac = [] #tempo médio de acesso
 
     for i in range(1,13):
