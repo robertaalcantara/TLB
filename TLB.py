@@ -12,8 +12,8 @@ def grafico(v1, v2):
 
 #lê os arquivos para cada tamanho de TLB e retorna as taxas
 def simulador(tamanho):
-    arquivos = ['bigone', 'bzip', 'gcc', 'sixpack', 'swim']
-    # arquivos = ['bzip']
+    # arquivos = ['bigone', 'bzip', 'gcc', 'sixpack', 'swim']
+    arquivos = ['bzip', 'gcc']
     tlb = []
     #variaveis que retornam todos os valores calculados dai
     taxasAcerto = []
@@ -77,7 +77,7 @@ if __name__ == "__main__":
         # print(tam)
 
         contInTlb, taxasAcerto, contNewTlb, taxasAdd, contSubTlb, taxasSub = simulador(tam)
-        # print(contInTlb, taxasAcerto, contNewTlb, taxasAdd, contSubTlb, taxasSub)
+        print(contInTlb, taxasAcerto, contNewTlb, taxasAdd, contSubTlb, taxasSub)
 
         for i in taxasAcerto:
             time = i * (tTlb+tm) + (1 - i) * (tTlb + 2 * tm)
@@ -94,4 +94,4 @@ if __name__ == "__main__":
     # print(contNewTlb)
     # plt.plot(tamanho,np.array(contInTlb))
     # plt.show()
-    grafico(contInTlb, tamanho)
+    # grafico(contInTlb, tamanho)
